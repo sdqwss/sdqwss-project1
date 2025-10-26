@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Создать групповой чат</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <p>
+        <strong>{{ form.name.label_tag }}</strong><br>
+        {{ form.name }}
+        {% if form.name.errors %}
+            <div style="color: red;">{{ form.name.errors }}</div>
+        {% endif %}
+    </p>
+    <p>
+        <strong>{{ form.members.label_tag }}</strong><br>
+        {{ form.members }}
+        {% if form.members.errors %}
+            <div style="color: red;">{{ form.members.errors }}</div>
+        {% endif %}
+    </p>
+    <button type="submit">Создать чат</button>
+</form>
+
+<a href="{% url 'room_list' %}">← Назад к чатам</a>
+{% endblock %}

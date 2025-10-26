@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Мои чаты</h2>
+
+{% if rooms %}
+    <ul>
+    {% for room in rooms %}
+        <li><a href="{% url 'room' room.id %}">{{ room.name|default:"Личный чат" }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>У вас пока нет чатов.</p>
+{% endif %}
+
+<a href="{% url 'create_group_room' %}">+ Создать групповой чат</a>
+<a href="{% url 'profile' %}">Профиль</a>
+{% endblock %}

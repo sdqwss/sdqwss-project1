@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация | Корпоративный мессенджер{% endblock %}
+
+{% block content %}
+<h2>Создание аккаунта</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="id_username">Имя пользователя:</label><br>
+        {{ form.username }}
+    </div>
+    <div>
+        <label for="id_password1">Пароль:</label><br>
+        {{ form.password1 }}
+    </div>
+    <div>
+        <label for="id_password2">Подтверждение пароля:</label><br>
+        {{ form.password2 }}
+    </div>
+    <button type="submit">Зарегистрироваться</button>
+</form>
+
+<p>Уже есть аккаунт? <a href="{% url 'login' %}">Войдите</a></p>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная | Корпоративный мессенджер{% endblock %}
+
+{% block content %}
+<h1>Добро пожаловать в корпоративный мессенджер!</h1>
+<p>Общайтесь с коллегами в реальном времени — быстро, удобно и безопасно.</p>
+
+{% if user.is_authenticated %}
+    <p>Вы уже вошли. Перейдите в <a href="{% url 'room_list' %}">чаты</a>.</p>
+{% else %}
+    <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a> или <a href="{% url 'register' %}">зарегистрируйтесь</a>, чтобы начать общение.</p>
+{% endif %}
+
+<a href="{% url 'room_list' %}" class="btn">Перейти к чатам</a>
+{% endblock %}

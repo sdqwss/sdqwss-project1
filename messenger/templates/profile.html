@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.username }} | Профиль{% endblock %}
+
+{% block content %}
+<h2>Профиль пользователя: {{ user.username }}</h2>
+
+<ul>
+    <li><strong>Имя пользователя:</strong> {{ user.username }}</li>
+    <li><strong>Email:</strong> {{ user.email|default:"Не указан" }}</li>
+    <li><strong>Дата регистрации:</strong> {{ user.date_joined|date:"d.m.Y H:i" }}</li>
+</ul>
+
+<a href="{% url 'room_list' %}" class="btn">← Назад к чатам</a>
+{% endblock %}

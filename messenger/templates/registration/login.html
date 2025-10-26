@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Вход | Корпоративный мессенджер{% endblock %}
+
+{% block content %}
+<h2>Вход в систему</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="id_username">Имя пользователя:</label><br>
+        {{ form.username }}
+    </div>
+    <div>
+        <label for="id_password">Пароль:</label><br>
+        {{ form.password }}
+    </div>
+    <button type="submit">Войти</button>
+</form>
+
+<p>Нет аккаунта? <a href="{% url 'register' %}">Зарегистрируйтесь</a></p>
+{% endblock %}
